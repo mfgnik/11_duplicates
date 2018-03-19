@@ -5,7 +5,7 @@ Script finds dublicate in folder which you choose.
 # Quick Start
 
 ```bash
-mikhail$ python dublicates.py /Users/Mikhail/Documents/test_folder
+python dublicates.py /Users/Mikhail/Documents/test_folder
 Количество дубликатов: 1
 test_file.rtf
 ```
