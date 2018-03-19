@@ -23,7 +23,7 @@ if __name__ == '__main__':
     file_path = sys.argv[1]
     file_names = find_file_names(file_path)
     dublicates = find_dublicates(file_names)
-    if len(dublicates) > 0:
+    if dublicates:
         print('Количество дубликатов:', len(dublicates))
         print(*(file_name for file_name in dublicates), sep='\n')
     else:
