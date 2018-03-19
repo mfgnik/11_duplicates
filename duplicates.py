@@ -5,7 +5,7 @@ import collections
 
 def find_file_names(file_path):
     file_names = []
-    for root, _, files in os.walk('/Users/Mikhail/Documents'):
+    for root, _, files in os.walk(file_path):
         file_names.extend(list(map(lambda name_of_file: (
             name_of_file,
             os.path.getsize(root + '/' + name_of_file)), files))
