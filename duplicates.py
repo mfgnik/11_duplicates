@@ -1,22 +1,17 @@
 import os
 import sys
+from collections import defaultdict
 
 
 def find_file_names_and_sizes(file_path):
-    file_names_and_sizes_dict = dict()
+    files_locations = defaultdict(list)
     for root, _, name_of_files in os.walk(file_path):
-        file_names_and_sizes = list(map(lambda name_of_file: (
-            name_of_file,
-            os.path.getsize(os.path.join(root, name_of_file))), name_of_files)
-                          )
-        for name_and_size_of_file in file_names_and_sizes:
-            name_of_file, _ = name_and_size_of_file
-            path = os.path.join(root, name_of_file)
-            if name_and_size_of_file in file_names_and_sizes_dict:
-                file_names_and_sizes_dict[name_and_size_of_file].append(path)
-            else:
-                file_names_and_sizes_dict[name_and_size_of_file] = [path]
-    return file_names_and_sizes_dict
+        for name_of_file in name_of_files:
+            path_of_file = os.path.join(root, name_of_file)
+            size_of_file = os.path.getsize(path_of_file)
+            name_and_size_of_file = (name_of_file, size_of_file)
+            files_locations[name_and_size_of_file].append(path_of_file)
+    return files_locations
 
 
 def find_duplicates(file_names_and_sizes_dict):
